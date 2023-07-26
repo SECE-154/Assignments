@@ -1,0 +1,83 @@
+1.  Find the Duplicate Number 
+    
+class Solution {
+    public int findDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        int res=0;
+        for(int i=0;i<nums.length-1;i++)
+        {
+            if(nums[i]==nums[i+1])
+            {
+                res=nums[i];
+            }
+        }
+        return res;
+    }
+}
+ 
+
+2.Number of Good Pairs
+
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int count=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]==nums[j])
+
+                {
+                count++;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+3. Find Greatest Common Divisor of Array
+
+class Solution {
+public:
+    int findGCD(vector<int>& nums) {
+        int a=*max_element(nums.begin(),nums.end());
+        int b=*min_element(nums.begin(),nums.end());
+        return gcd(a,b);
+    }
+};
+
+4.Unique Number of Occurrences
+
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        Map<Integer, Integer> counter = new HashMap<>();
+        for (int x : arr) {
+            counter.put(x, counter.getOrDefault(x, 0) + 1);
+        }
+        Set<Integer> s = new HashSet<>();
+        for (int num : counter.values()) {
+            if (s.contains(num)) {
+                return false;
+            }
+            s.add(num);
+        }
+        return true;
+    }
+}
+
+5. Find All Duplicates in an Array
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++) {
+            int n = Math.abs(nums[i]);
+            if(nums[n-1] > 0) {
+                nums[n-1] = -nums[n-1];
+            } else {
+                list.add(Math.abs(nums[i]));
+            }
+        }
+        return list; 
+    }
+}
